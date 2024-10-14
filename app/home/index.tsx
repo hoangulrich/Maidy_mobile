@@ -4,12 +4,18 @@ import { useRouter } from "expo-router";
 import { useAuth } from "@clerk/clerk-expo";
 import Header from "@/components/HomeScreen/Header";
 import Slider from "@/components/HomeScreen/Slider";
+import Category from "@/components/HomeScreen/Category";
+import BusinessList from "@/components/HomeScreen/BusinessList";
 
 export default function Home() {
   return (
     <View>
       <Header />
-      <Slider />
+      <View style={{ padding: 20 }}>
+        <Slider />
+        <Category />
+        <BusinessList />
+      </View>
     </View>
   );
 }

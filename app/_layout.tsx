@@ -6,6 +6,8 @@ import { Colors } from "@/constants/Colors";
 import { ClerkProvider, ClerkLoaded, useAuth } from "@clerk/clerk-expo";
 import { Slot, useSegments, useRouter } from "expo-router";
 import * as SecureStore from "expo-secure-store";
+import { ApolloProvider } from "@apollo/client";
+import client from "@/global/hygraphClient";
 
 const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY!;
 
@@ -86,7 +88,9 @@ export default function RootLayout() {
   return (
     <ClerkProvider tokenCache={tokenCache} publishableKey={publishableKey}>
       <ClerkLoaded>
-        <InitialLayout />
+        <ApolloProvider client={client}>
+          <InitialLayout />
+        </ApolloProvider>
       </ClerkLoaded>
     </ClerkProvider>
   );
